@@ -4,6 +4,7 @@ import Dashboard from '../views/DashboardView.vue'
 import InfoFin from '../views/InfoFinView.vue'
 import Login from '../views/LoginView.vue'
 import Course from '../views/CourseView.vue'
+import Register from '../views/RegisterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,14 @@ const router = createRouter({
       component: Course,
       meta: {
         requireAuth: true
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+      meta: {
+        requireAuth: false
       }
     }
   ]

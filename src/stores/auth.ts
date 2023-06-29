@@ -39,6 +39,20 @@ export const useAuth = defineStore(
       token.value = ''
     }
 
+    async function register(email: string, password: string, name: string, phone: string) {
+      await axios
+        .post('http://localhost:8080/api/register', {
+          name: name,
+          phone: Number(phone),
+          nacionalidad: 'Colombia',
+          email: email,
+          password: password
+        })
+        .then((res) => {
+          console.log(res.data)
+        })
+    }
+
     async function profile() {
       await axios
         .get('http://localhost:8080/api/profile', {
@@ -54,7 +68,7 @@ export const useAuth = defineStore(
           console.log(err)
         })
     }
-    return { token, login, logout, profile, user }
+    return { token, login, logout, profile, user, register }
   },
   {
     persist: {
